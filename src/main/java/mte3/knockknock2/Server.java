@@ -37,13 +37,18 @@ public class Server extends Duplexer implements Runnable {
         synchronized(JOKES) {  joke = JOKES[JOKE_NUMBER];  JOKE_NUMBER = (JOKE_NUMBER+1) % JOKES.length; }
 
         send("Knock, knock!");
+        System.out.println("Knock, knock!");
         String answer = receive();
+        System.out.println(answer);
         boolean allGood = answer.equals("Who's there?");
         if(allGood) {
             send(joke.getSetup());
+            System.out.println(joke.getSetup());
             String response = receive();
+            System.out.println(response);
             allGood = joke.isResponseValid(response);
-            if(allGood) {    send(joke.getPunchline());    } 
+            if(allGood) {    send(joke.getPunchline());
+            System.out.println(joke.getPunchline());    } 
         }
         
         if(!allGood) {    send("What's the matter? Never heard of a knock, knock joke?");    }

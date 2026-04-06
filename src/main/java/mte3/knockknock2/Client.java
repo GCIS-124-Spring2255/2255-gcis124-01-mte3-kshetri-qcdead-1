@@ -14,11 +14,14 @@ public class Client extends Duplexer implements Runnable {
 
     @Override
     public void run() {
-        receive();                // question
+        System.out.println(receive());                // question
+        System.out.println("Who's there?");
         send("Who's there?");    // answer
         String setup = receive();   // setup
+        System.out.println(setup);
+        System.out.println(setup + " who?");
         send(setup + " who?");     // response
-        receive();                // punchline
+        System.out.println(receive());                // punchline
         close();
     } // run() method closed 
 
