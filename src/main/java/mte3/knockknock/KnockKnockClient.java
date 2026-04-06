@@ -14,19 +14,27 @@ public class KnockKnockClient {
     public static String SERVER = "localhost";
 
     public static void sendAndReceive(PrintWriter writer, String message, Scanner scanner) {
-        
+        writer.println(message);
+        writer.flush();
+        System.out.println("Sent: " + message);
+        String output = scanner.nextLine();
+        System.out.println("Recieved: " + output);
         // 
         // 
         // 
 
     } // sendAndReceive() method closed
     
+    public static void start(Socket connection) throws IOException {
+        sendAndReceive(new PrintWriter(connection.getOutputStream()), "Knock, knock", new Scanner(connection.getInputStream()));
+    }
 
     public static void joke(String who,String punchLine) throws IOException {
-        
-        //  
-        // 
-        // 
+        Socket connection = new Socket(SERVER, PORT);
+        start(connection);
+        sendAndReceive(new PrintWriter(connection.getOutputStream()), who, new Scanner(connection.getInputStream()));
+        sendAndReceive(new PrintWriter(connection.getOutputStream()), punchLine, new Scanner(connection.getInputStream()));
+        connection.close();
 
     } // joke() method closed
 

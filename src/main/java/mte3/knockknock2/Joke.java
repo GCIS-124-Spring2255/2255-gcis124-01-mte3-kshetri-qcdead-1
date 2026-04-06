@@ -10,15 +10,22 @@ public class Joke {
 	
     
     // Joke constructor
-	
+	public Joke(String setup, String punchLine) {
+        this.setup = setup;
+        this.punchline = punchLine;
+    }
 
 
 	// getSetup() method
-    
+    public String getSetup() {
+        return setup;
+    }
     
 
     // getPunchline() method
-    
+    public String getPunchline() {
+        return punchline;
+    }
 	
 	
 	
